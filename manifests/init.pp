@@ -53,13 +53,17 @@ class mt-daapd(
     }    
 
     include mt-daapd::service
-    include mt-daapd::monit
 
-    class { 'mt-daapd::packetfilter':
-        admin_allow_ipv4_address => $admin_allow_ipv4_address,
-        admin_allow_ipv6_address => $admin_allow_ipv6_address,
-        daap_allow_ipv4_address => $daap_allow_ipv4_address,
-        daap_allow_ipv6_address => $daap_allow_ipv6_address,
+    if tagged('monit') {
+        include mt-daapd::monit
     }
 
+    if tagged('packetfilter') {
+        class { 'mt-daapd::packetfilter':
+            admin_allow_ipv4_address => $admin_allow_ipv4_address,
+            admin_allow_ipv6_address => $admin_allow_ipv6_address,
+            daap_allow_ipv4_address => $daap_allow_ipv4_address,
+            daap_allow_ipv6_address => $daap_allow_ipv6_address,
+        }
+    }
 }
