@@ -20,11 +20,11 @@
 #
 # == Examples
 #
-# class {'mt-daapd':
-#   mp3_dir => '/data/music',
-#   admin_pw => 'mypassword',
-#   daap_allow_ipv4_address => '192.168.50.0/24',
-# }
+#   class {'mt-daapd':
+#       mp3_dir => '/data/music',
+#       admin_pw => 'mypassword',
+#       daap_allow_ipv4_address => '192.168.50.0/24',
+#   }
 #
 # == Authors
 #
@@ -32,8 +32,7 @@
 #
 # == License
 #
-# BSD-license
-# See file LICENSE for details
+# BSD-license. See file LICENSE for details.
 #
 class mt-daapd(
     $mp3_dir,
